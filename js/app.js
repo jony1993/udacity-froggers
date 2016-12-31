@@ -1,6 +1,7 @@
+'use strict'
+
 //Gobal Object for the score counter
 var score = 0;
-console.log(document.getElementById("score").innerHTML = score);
 
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
@@ -34,10 +35,8 @@ Enemy.prototype.update = function(dt) {
     }
 
     //handle collosion with the player
-    if (player.x >= this.x - 40 && player.x <= this.x + 40) {
-        if (player.y >= this.y - 40 && player.y <= this.y + 40) {
-            this.reset();
-        }
+    if (player.x >= this.x - 40 && player.x <= this.x + 40 && player.y >= this.y - 40 && player.y <= this.y + 40) {
+        player.reset();
     }
 };
 
@@ -110,15 +109,7 @@ Player.prototype.handleInput = function(e) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 //all Enemies
-var allEnemies = [];
-
-function setEnemies() {
-    allEnemies.push(new Enemy(-2, 60, 70));
-    allEnemies.push(new Enemy(-2, 140, 100));
-    allEnemies.push(new Enemy(-2, 220, 200));
-}
-
-setEnemies();
+var allEnemies = [new Enemy(-100, 60, 70), new Enemy(-100, 140, 100), new Enemy(-100, 220, 200)];
 
 //new Player
 var player = new Player();
@@ -126,13 +117,14 @@ var player = new Player();
 
 //Global reset Method
 //Reset player to the beginning position
-Object.prototype.reset = function() {
-    player.x = 200;
-    player.y = 400;
+Player.prototype.reset = function() {
+    this.x = 200;
+    this.y = 400;
 
     //empty Alleenemys
-    allEnemies.length = 0
-    setEnemies();
+    allEnemies.length = 0;
+    allEnemies= [new Enemy(-100, 60, 70), new Enemy(-100, 140, 100), new Enemy(-100, 220, 200)];
+
 };
 
 
