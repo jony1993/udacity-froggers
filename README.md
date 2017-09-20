@@ -1,8 +1,8 @@
-#frontend-nanodegree-arcade-game
+# frontend-nanodegree-arcade-game
 
 This is a clone of the classic acarde game Frogger.
 
-##Get started
+## Get started
 
 To begin, download all files.
 Open index.html in your browser.
